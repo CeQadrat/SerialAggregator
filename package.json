@@ -10,8 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "ejs": "^2.5.2",
     "express": "^4.14.0",
-    "nconf": "^0.8.4"
+    "firebase": "^3.5.0",
+    "nconf": "^0.8.4",
+    "simple-oauth2": "^1.0.0",
+    "webpack": "^1.13.2"
   },
   "devDependencies": {},
   "description": ""

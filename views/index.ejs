@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Serial Aggregator</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/main.css" rel="stylesheet">
+</head>
+
+<body ng-app="app" ng-controller="MainController as mainCtrl">
+
+<%- include ./partials/navbar.ejs %>
+
+<enter-serial series="mainCtrl.series" ng-if="!mainCtrl.series"></enter-serial>
+
+<%- include ./pages/waiting.ejs %>
+
+<series series="mainCtrl.series" ng-if="mainCtrl.series"></series>
+
+<script src="/js/angular.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+
+<script src="/javascripts/main.js"></script>
+<script src="/javascripts/components/auth/auth.component.js"></script>
+<script src="/javascripts/components/enterSerial/enterSerial.component.js"></script>
+<script src="/javascripts/components/series/series.component.js"></script>
+<script src="/javascripts/services/serialService/serialService.js"></script>
+<script src="/javascripts/services/userService.js"></script>
+
+</body>
+
+</html>

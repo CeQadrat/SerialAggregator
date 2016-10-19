@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 inner-series">
+            <div class="window-block">
+                <div class="row">
+                    <div ng-if="ctrl.series.provider != 'lostfilm'" class="col-xs-4">
+                        <img ng-src="{{ctrl.series.serialCover}}" class="cover-img">
+                    </div>
+                    <div ng-class="ctrl.series.provider != 'lostfilm' ? 'col-xs-8' : 'col-xs-12'">
+                        <h2>{{ctrl.series.serialName}} <small>{{ctrl.series.season}} сезон {{ctrl.series.series}} серия</small></h2>
+                        <div>{{ctrl.series.date | date:"'Добавлено' dd-MM-yyyy 'в' h:mm"}}</div>
+                        <img ng-if="ctrl.series.provider == 'lostfilm'" ng-src="{{ctrl.series.serialCover}}" class="cover-img">
+                        <div ng-if="ctrl.series.episodeName">Название эпизода: {{ctrl.series.episodeName}}</div>
+                        <div>
+                            <h4>Ссылки для просмотра:</h4>
+                            <div ng-if="!ctrl.series.links.linksToWatch">Провайдер не предоставляет такое :(</div>
+                            <div ng-repeat="source in ctrl.series.links.linksToWatch">
+                                Смотреть серию на {{source.info}}
+                                <a ng-href="{{source.link}}" target="_blank">Смотреть</a>
+                            </div>
+                        </div>
+                        <br>
+                        <div>
+                            <h4>Ссылки для скачивания:</h4>
+                            <div ng-if="!ctrl.series.links.torrentLinks">Провайдер не предоставляет такое :(</div>
+                            <div ng-repeat="torrent in ctrl.series.links.torrentLinks">
+                                {{torrent.info}}
+                                <a ng-href="{{torrent.link}}">Скачать</a>
+                            </div>
+                        </div>
+                        <h4>Сменить провайдера</h4>
+                        <div class="col-xs-6">
+                            <select class="form-control" ng-model="ctrl.provider">
+                                <option value="coldfilm">ColdFilm</option>
+                                <option value="lostfilm">LostFilm</option>
+                                <option value="newstudio">NewStudio</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-2">
+                            <button class="btn btn-primary" ng-click="ctrl.changeProvider(ctrl.provider)">Сменить</button>
+                        </div>
+                        <footer class="footer">
+                            <button class="btn btn-primary btn-block" ng-click="ctrl.next()">Предыдущая серия</button>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

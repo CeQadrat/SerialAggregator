@@ -1,0 +1,30 @@
+<ul class="nav navbar-nav navbar-right" ng-if="!ctrl.logged">
+    <li><a href="" ng-click="ctrl.loginWindow('show')">
+        Login
+    </a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right" ng-if="ctrl.logged">
+    <li><a href="" ng-click="ctrl.logoutUser()">
+        Logout
+    </a></li>
+</ul>
+
+<div id="loginWindow" style="display: none">
+    <div class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="Login" style="display: inherit;margin-top: 15%">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="ctrl.loginWindow('hide')"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Login</h4>
+                </div>
+                <div class="modal-body">
+                    <button class="btn" ng-click="ctrl.loginUser('facebook')">FB</button>
+                    <button class="btn" ng-click="ctrl.loginUser('twitter')">TW</button>
+                    <button class="btn" ng-click="ctrl.loginUser('google')">G+</button>
+                    <button class="btn" ng-click="ctrl.loginUser('github')">GH</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade in" style="display: inherit"></div>
+</div>

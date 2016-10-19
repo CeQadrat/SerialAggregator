@@ -1,0 +1,40 @@
+body{
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #222;
+}
+
+.navbar-inner{
+    background: rgba(0,0,0,0.5);
+}
+
+.inner-home{
+    padding-top: 20%;
+}
+.inner-series{
+    padding-top: 6%;
+}
+.window-block {
+    border: black;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 10px 20px;
+    color: white;
+}
+
+.cover-img{
+    width: 100%;
+}
+
+.footer{
+    padding-top: 50px;
+}
+
+.waiting-block{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1050;
+}
