@@ -1,3 +1,28 @@
 {
-  "port": 8080
+  "port": 8080,
+  "mongoose": {
+    "uri": "mongodb://localhost/SeAg"
+  },
+  "oauth": {
+    "facebook": {
+      "clientId": "1346671832033707",
+      "clientSecret": "6175f75e60de06a326985ffcd9499748",
+      "callbackURL": "http://localhost:8080/auth/facebook/callback"
+    },
+    "google": {
+      "clientId": "1031805192812-vumjofal1lim2tnn6iqcdas1gaib6qdq.apps.googleusercontent.com",
+      "clientSecret": "lpnzvjucrQ6g2IaCpwQP0t5R",
+      "callbackURL": "http://localhost:8080/auth/google/callback"
+    },
+    "twitter": {
+      "consumerKey": "1xfn2XvSHkqzmjAJiefYaRrcn",
+      "consumerSecret": "nc3qhxpof1Y58olMounenZtv3mMA2XxIHVoZV2qrsU4bH6e0o4",
+      "callbackURL": "http://localhost:8080/auth/twitter/callback"
+    },
+    "vk": {
+      "clientId": "5680034",
+      "clientSecret": "Qsi0wts7rbZCUW9lrV0F",
+      "callbackURL": "http://localhost:8080/auth/vk/callback"
+    }
+  }
 }

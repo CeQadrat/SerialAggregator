@@ -5,7 +5,7 @@
             let factory = {};
             let serialName;
             const self = this;
-            const generator = 'generator' + Math.random() * 1000;
+            const generator = 'generator' + Math.floor(Math.random() * (100000));
             factory.getSeries = function () {
                 return Promise.resolve(self.series);
             };
@@ -25,10 +25,6 @@
                     })
                         .catch(reject);
                 });
-            };
-            factory.waiting = function (param) {
-                if (param == 'show') document.getElementById('waiting').setAttribute('class', '');
-                if (param == 'hide') document.getElementById('waiting').setAttribute('class', 'ng-hide');
             };
             return factory;
         });

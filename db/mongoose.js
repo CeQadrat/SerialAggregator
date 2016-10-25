@@ -1,50 +1,14 @@
-const mongoose = require('mongoose');
-const config = require('../../../config/config');
+const config = require('../config/config');
 
-mongoose.connect(config.get('mongoose:uri'));
-var db = mongoose.connection;
+module.exports = (mongoose) => {
+    mongoose.connect(config.get('mongoose:uri'));
+    mongoose.Promise = global.Promise;
+    let db = mongoose.connection;
 
-db.on('error', (err) => {
-    console.error('connection error:', err.message);
-});
-db.once('open', () => {
-    console.info("Connected to DB!");
-});
-
-let User = new Schema({
-    username: {
-        type: String,
-        unique: true,
-        required: true
-    },
-    created: {
-        type: Date,
-        default: Date.now
-    }
-});
-
-User.virtual('userId')
-    .get(() => {
-        return this.id;
+    db.on('error', (err) => {
+        console.error('connection error:', err.message);
     });
-
-const UserModel = mongoose.model('User', User);
-
-const AccessToken = new Schema({
-    userId: {
-        type: String,
-        required: true
-    },
-    token: {
-        type: String,
-        unique: true,
-        required: true
-    },
-    created: {
-        type: Date,
-        default: Date.now
-    }
-});
-
-const AccessTokenModel = mongoose.model('AccessToken', AccessToken);
-
+    db.once('open', () => {
+        console.info("Connected to DB!");
+    });
+};

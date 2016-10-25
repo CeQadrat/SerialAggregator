@@ -5,4 +5,8 @@ router.get('/', function(req, res, next) {
     res.render('index');
 });
 
+router.get('/currentUser', (req,res) => {
+    res.jsonp(req.user)
+});
+
 module.exports = router;

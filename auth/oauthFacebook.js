@@ -7,26 +7,26 @@ module.exports = (passport) => {
             clientID: config.get('oauth:facebook:clientId'),
             clientSecret: config.get('oauth:facebook:clientSecret'),
             callbackURL: config.get('oauth:facebook:callbackURL'),
-            profileFields: ['id', 'gender', 'link', 'displayName', 'email', 'picture']
+            profileFields: ['id', 'gender', 'link', 'displayName', 'picture']
         },
         function(accessToken, refreshToken, profile, done) {
             UserModel.findOne({
-                'facebook.id': profile.id
+                'providerId': profile.id,
+                'provider': profile.provider
             }, function(err, user) {
                 if (err) {
                     return done(err);
                 }
                 if (!user) {
+                    console.log('Create new '+profile.provider+' user');
                     user = new UserModel({
-                        facebook: {
-                            id: profile.id,
-                            token: accessToken,
-                            name: profile.displayName,
-                            email: profile.emails[0].value,
-                            cover: profile.photos[0].value,
-                            gender: profile.gender,
-                            profileUrl: profile.profileUrl
-                        }
+                        providerId: profile.id,
+                        token: accessToken,
+                        name: profile.displayName,
+                        cover: profile.photos[0].value,
+                        gender: profile.gender,
+                        profileUrl: profile.profileUrl,
+                        provider: profile.provider
                     });
                     user.save(function(err) {
                         if (err) console.log(err);

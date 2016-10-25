@@ -3,13 +3,12 @@
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 inner-series">
             <div class="window-block">
                 <div class="row">
-                    <div ng-if="ctrl.series.provider != 'lostfilm'" class="col-xs-4">
+                    <div class="col-xs-4">
                         <img ng-src="{{ctrl.series.serialCover}}" class="cover-img">
                     </div>
-                    <div ng-class="ctrl.series.provider != 'lostfilm' ? 'col-xs-8' : 'col-xs-12'">
+                    <div class="col-xs-8">
                         <h2>{{ctrl.series.serialName}} <small>{{ctrl.series.season}} сезон {{ctrl.series.series}} серия</small></h2>
                         <div>{{ctrl.series.date | date:"'Добавлено' dd-MM-yyyy 'в' h:mm"}}</div>
-                        <img ng-if="ctrl.series.provider == 'lostfilm'" ng-src="{{ctrl.series.serialCover}}" class="cover-img">
                         <div ng-if="ctrl.series.episodeName">Название эпизода: {{ctrl.series.episodeName}}</div>
                         <div>
                             <h4>Ссылки для просмотра:</h4>

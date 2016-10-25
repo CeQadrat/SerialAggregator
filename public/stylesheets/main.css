@@ -18,7 +18,7 @@ body{
 .window-block {
     border: black;
     border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.90);
     padding: 10px 20px;
     color: white;
 }
@@ -31,10 +31,8 @@ body{
     padding-top: 50px;
 }
 
-.waiting-block{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1050;
+.avatar-min{
+    width: 20px;
+    border-radius: 3px;
+    margin-right: 5px;
 }

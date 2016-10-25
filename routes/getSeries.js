@@ -13,7 +13,6 @@ router.get('/', function(req, res, next) {
     provider.init().then(() => {
         generators[req.query.generator] = provider.getSeries();
         generators[req.query.generator].next().value.then((episode) => {
-            episode.provider = req.query.provider;
             res.jsonp(episode);
         });
     });

@@ -14,11 +14,10 @@
     function enterSerialCtrl(serialService) {
         const self = this;
         self.send = function () {
-            serialService.waiting('show');
+            $('#waiting').modal('show');
             serialService.getSerial(self.serialName, self.provider).then((series) => {
-                serialService.waiting('hide');
+                $('#waiting').modal('hide');
                 self.series = series;
-                console.log(series);
             });
         }
     }

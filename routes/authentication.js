@@ -1,14 +1,45 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 
-router.get('/login', (req, res, next) => {
-    console.log('Sign in with '+req.query.provider);
-    res.jsonp(true);
-});
+module.exports = (passport) => {
+    router.get('/facebook', passport.authenticate('facebook'));
 
-router.get('/logout', (req, res, next) => {
-    console.log('Logout');
-    res.jsonp(true);
-});
+    router.get('/facebook/callback',
+        passport.authenticate('facebook', {
+            successRedirect: '/',
+            failureRedirect: '/err'
+        }));
 
-module.exports = router;
+    router.get('/vk', passport.authenticate('vkontakte'));
+
+    router.get('/vk/callback',
+        passport.authenticate('vkontakte', {
+            successRedirect: '/',
+            failureRedirect: '/err'
+        }));
+
+    router.get('/twitter', passport.authenticate('twitter'));
+
+    router.get('/twitter/callback',
+        passport.authenticate('twitter', {
+            successRedirect: '/',
+            failureRedirect: '/err'
+        }));
+
+    router.get('/google', passport.authenticate('google', {
+        scope: ['https://www.googleapis.com/navbar/plus.login']
+    }));
+
+    router.get('/google/callback',
+        passport.authenticate('google', {
+            successRedirect: '/',
+            failureRedirect: '/err'
+        }));
+
+    router.get('/logout', (req, res, next) => {
+        req.logout();
+        res.redirect('/');
+    });
+    return router;
+};

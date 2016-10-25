@@ -4,7 +4,7 @@ const config = require('./config/config');
 
 let server = http.createServer(app);
 
-server.listen(config.get('port'));
+server.listen(process.env.PORT || config.get('port'));
 server.on('error', (error) => {
     console.error(error);
 });

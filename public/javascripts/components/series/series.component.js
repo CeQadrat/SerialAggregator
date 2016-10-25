@@ -14,20 +14,17 @@
     function seriesController(serialService) {
         const self = this;
         self.next = function () {
-            console.log('click');
-            serialService.waiting('show');
+            $('#waiting').modal('show');
             serialService.getNextSeries().then((series) => {
-                serialService.waiting('hide');
+                $('#waiting').modal('hide');
                 self.series = series;
-                console.log(series);
             });
         };
         self.changeProvider = function (provider) {
-            serialService.waiting('show');
+            $('#waiting').modal('show');
             serialService.getSerial(null, provider).then((series) => {
-                serialService.waiting('hide');
+                $('#waiting').modal('hide');
                 self.series = series;
-                console.log(series);
             });
         }
     }
