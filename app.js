@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/', express.static(__dirname + '/lib'));
+app.use('/', express.static(__dirname + '/lib/font-awesome-4.6.3'));
 app.use('/js', express.static(__dirname + '/node_modules/angular'));
 
 app.use(cookieParser());
