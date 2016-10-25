@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const ColdFilmSP = require('../../serials providers/ColdFilmSP/coldFilmSerialProvider');
-const LostFilmSP = require('../../serials providers/LostFilmSerialProvider/LostFilmSerialProvider');
-const NewStudioSP = require('../../serials providers/NewStudioSerialProvider/NewStudioSerialProvider');
+const ColdFilmSP = require('../serials providers/ColdFilmSP/coldFilmSerialProvider');
+const LostFilmSP = require('../serials providers/LostFilmSerialProvider/LostFilmSerialProvider');
+const NewStudioSP = require('../serials providers/NewStudioSerialProvider/NewStudioSerialProvider');
 
 let generators = {};
 router.get('/', function(req, res, next) {

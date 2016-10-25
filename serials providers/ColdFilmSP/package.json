@@ -1,0 +1,17 @@
+{
+  "name": "ColdFilmSP",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "ceqadrat@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "co": "^4.6.0",
+    "htmlparser2": "^3.9.1",
+    "utf8": "^2.1.1"
+  }
+}
