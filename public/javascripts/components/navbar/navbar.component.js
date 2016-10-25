@@ -10,7 +10,9 @@
 
     function authCtrl(userService) {
         const self = this;
-        self.logged = false;
+        userService.getUser().then((user) => {
+            self.user = user;
+        }).catch(console.log);
         self.loginWindow = function (param) {
             if(param == 'hide') document.getElementById('loginWindow').setAttribute('style','display: none');
             if(param == 'show') document.getElementById('loginWindow').setAttribute('style','display: block');

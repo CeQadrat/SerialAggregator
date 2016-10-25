@@ -1,0 +1,44 @@
+<ul class="nav navbar-nav navbar-right" ng-if="!ctrl.user">
+    <li><a href="" ng-click="ctrl.loginWindow('show')">
+        Login
+    </a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right" ng-if="ctrl.user">
+    <li><a ng-href="{{ctrl.user.profileUrl}}" target="_blank">
+        <img ng-src="{{ctrl.user.cover}}" class="avatar-min">
+        <span>{{ctrl.user.name}}</span>
+    </a></li>
+    <li><a href="/auth/logout">
+        Logout
+    </a></li>
+</ul>
+
+<div id="loginWindow" style="display: none">
+    <div class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="Login" style="display: inherit;margin-top: 15%">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="ctrl.loginWindow('hide')"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Login</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xs-2">
+                        <a class="btn btn-social-icon btn-lg btn-facebook" href="/auth/facebook">
+                            <span class="fa fa-facebook"></span>
+                        </a>
+                    </div>
+                    <a class="btn btn-social-icon btn-lg btn-twitter" href="/auth/twitter">
+                        <span class="fa fa-twitter"></span>
+                    </a>
+                    <a class="btn btn-social-icon btn-lg btn-google" href="/auth/google">
+                        <span class="fa fa-google"></span>
+                    </a>
+                    <a class="btn btn-social-icon btn-lg btn-vk" href="/auth/vk">
+                        <span class="fa fa-vk"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade in" style="display: inherit"></div>
+</div>
