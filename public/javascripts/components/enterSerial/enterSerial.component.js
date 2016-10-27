@@ -13,11 +13,16 @@
 
     function enterSerialCtrl(serialService) {
         const self = this;
+        self.error = null;
         self.send = function () {
             $('#waiting').modal('show');
             serialService.getSerial(self.serialName, self.provider).then((series) => {
                 $('#waiting').modal('hide');
-                self.series = series;
+                if(series.error) self.error = series.error;
+                else {
+                    self.series = series;
+                    self.error = null;
+                }
             });
         }
     }

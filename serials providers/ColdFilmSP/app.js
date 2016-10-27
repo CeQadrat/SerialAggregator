@@ -1,6 +1,6 @@
 const ColdFilmSP = require('./coldFilmSerialProvider');
 
-let provider = new ColdFilmSP('Мистер робот');
+let provider = new ColdFilmSP('мистер робот');
 provider.init().then(() => {
     let generator = provider.getSeries();
     generator.next().value.then((episode) => {
@@ -8,4 +8,4 @@ provider.init().then(() => {
         console.log(episode.links.torrentLinks);
         console.log(episode.links.linksToWatch);
     }).catch(console.error);
-});
+}).catch(console.error);

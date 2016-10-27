@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
-        <div class="col-xs-3"></div>
-        <div class="col-xs-6 inner-home">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 inner-home">
             <div class="window-block">
                 <form>
                     <div class="form-group">
@@ -14,7 +14,8 @@
                             <option value="newstudio">NewStudio</option>
                         </select>
                     </div>
-                    <button class="btn btn-primary btn-block" ng-click="ctrl.send()">Найти</button>
+                    <p class="text-danger" ng-if="ctrl.error">{{ctrl.error}}</p>
+                    <button class="btn btn-primary btn-block" ng-click="ctrl.send()" ng-disabled="!ctrl.serialName || !ctrl.provider">Найти</button>
                 </form>
             </div>
         </div>

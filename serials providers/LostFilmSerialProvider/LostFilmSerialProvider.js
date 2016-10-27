@@ -9,11 +9,13 @@ module.exports = class LostFilmSP{
     }
     init(){
         let self = this;
+        let findSerial = false;
         return new Promise((resolve,reject) => {
             getPage('http://www.lostfilm.tv/serials.php')
                 .then((body) => {
                     for (let serial of searchParser.parse(body)){
                         if(serial.name.toLowerCase() == self.serialName){
+                            findSerial = true;
                             getPage('http://www.lostfilm.tv/browse.php?cat='+serial.code)
                                 .then((body) => {
                                     self.series = serialParser.parse(body);
@@ -22,6 +24,7 @@ module.exports = class LostFilmSP{
                                 .catch(reject);
                         }
                     }
+                    if(!findSerial) reject('Serial not found');
                 })
                 .catch(reject);
         });

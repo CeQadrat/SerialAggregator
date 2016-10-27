@@ -11,6 +11,7 @@ module.exports = class ColdFilmSP {
         return new Promise((resolve,reject) => {
             co(serialGen(self.serialName)).then((series) => {
                 self.series = series;
+                if(!series.length) reject('Serial not found');
                 resolve();
             })
                 .catch(err => reject(err));
