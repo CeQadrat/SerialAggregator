@@ -40,6 +40,7 @@ app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/css', express.static(__dirname + '/node_modules/font-awesome/css'));
+app.use('/fonts', express.static(__dirname + '/node_modules/font-awesome/fonts'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap-social'));
 app.use('/js', express.static(__dirname + '/node_modules/angular'));
 

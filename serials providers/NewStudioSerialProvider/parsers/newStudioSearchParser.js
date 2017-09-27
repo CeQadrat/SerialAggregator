@@ -13,7 +13,7 @@ module.exports = {
         let episode = {};
         let parser = new htmlParser.Parser({
             onopentag: (name, attribs) => {
-                if (name == 'div' && attribs.class == 'span7') {
+                if (name == 'div' && attribs.class == 'well well-small topic_id') {
                     enableParse = true;
                 }
                 if (name == 'a' && enableParse) {
@@ -25,7 +25,7 @@ module.exports = {
                 }
             },
             ontext: (text) => {
-                if (enableParseText) {
+                if (enableParseText && text) {
                     text = text.split('(')[1].split(')')[0];
                     let buf = text.split(' ');
                     episode.season = buf[3] ? buf[1].slice(0, -1) : buf[1];

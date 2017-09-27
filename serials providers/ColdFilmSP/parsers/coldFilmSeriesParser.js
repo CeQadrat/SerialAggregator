@@ -10,6 +10,7 @@ module.exports = {
     },
     _parse(page){
         let enableParse = false;
+        let enableParseImg = false;
         let enableParseTorrentLink = false;
 
         let serialCover = '';
@@ -19,11 +20,15 @@ module.exports = {
 
         let parser = new htmlParser.Parser({
             onopentag: (name, attribs) => {
-                if (name === "td" && attribs.class === "eMessage") {
+                if (name === "div" && attribs.class === "player-box visible full-text") {
                     enableParse = true;
                 }
-                if (name === 'img' && enableParse) {
-                    serialCover = attribs.src;
+                if (name === "div" && attribs.class === "kino-desc full-text clearfix") {
+                    enableParseImg = true;
+                }
+                if (name === 'img' && enableParseImg) {
+                    serialCover = 'http://coldfilm.ru/' + attribs.src;
+                    enableParseImg = false;
                 }
                 if (name === "iframe" && enableParse) {
                     if (attribs.src.indexOf('http') == -1) attribs.src = 'http:' + attribs.src;
@@ -43,7 +48,7 @@ module.exports = {
                 }
             },
             onclosetag: (tagname) => {
-                if (tagname === "td" && enableParse) {
+                if (tagname === "div" && enableParse) {
                     enableParse = false;
                 }
                 if (tagname === "a" && enableParseTorrentLink) {

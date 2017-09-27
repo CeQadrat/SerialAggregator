@@ -17,13 +17,13 @@ module.exports = {
 
         let parser = new htmlParser.Parser({
             onopentag: (name, attribs) => {
-                if(name === 'div' && attribs.class === 'eTitle'){
+                if(name === 'div' && attribs.class === 'sres-text'){
                     enableParseLink = true;
                 }
-                if(name === 'a' && enableParseLink) {
+                if(name === 'a' && attribs.class === 'sres-wrap clearfix') {
                     serial.link = attribs.href;
                 }
-                if(name === 'div' && attribs.class === 'eDetails'){
+                if(name === 'div' && attribs.class === 'sres-date'){
                     enableParseDate = true;
                 }
                 if(name === 'a' && attribs.class === 'swchItem'){
@@ -43,9 +43,9 @@ module.exports = {
                 }
             },
             onclosetag: (tagname) => {
-                if(tagname === 'a' && enableParseLink){
+                if(tagname === 'h2' && enableParseLink){
                     serial.name = '';
-                    serialTitle = serialTitle.slice(1,-19);
+                    serialTitle = serialTitle.slice(2,-19);
                     serialTitle = serialTitle.split(' ');
                     serialTitle.forEach((item, i, arr) => {
                         if(isNaN(item) && enableParseLink) serial.name += item+' ';
@@ -55,11 +55,11 @@ module.exports = {
                     });
                     serial.name = serial.name.slice(0,-1);
                     serialTitle = '';
+                    series.push(serial);
+                    serial = {};
                 }
                 if(tagname === 'div' && enableParseDate){
                     enableParseDate = false;
-                    series.push(serial);
-                    serial = {};
                 }
                 if(tagname === 'a' && enableParseNextPage){
                     enableParseNextPage = false;
